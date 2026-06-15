@@ -28,20 +28,20 @@ export default function Contact() {
               <div style={{ border: '1px solid var(--rule)', borderRadius: 'var(--radius)', background: 'var(--surface)', marginBottom: 16, overflow: 'hidden' }}>
                 <div style={{ padding: '14px 22px', background: 'var(--paper)', borderBottom: '1px solid var(--rule)', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--muted)' }}>Direct lines</div>
                 <div style={{ padding: '24px 22px' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 22 }}>
+                  <div className="contact-lines">
                     <div>
                       <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 6 }}>Operations</div>
-                      <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(18px, 4.5vw, 20px)', letterSpacing: '-0.015em', fontWeight: 500 }}><a href="tel:+917990548623">+91 79905 48623</a></div>
+                      <div className="contact-value"><a href="tel:+917990548623">+91 79905 48623</a></div>
                     </div>
                     <div>
                       <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 6 }}>Logistics</div>
-                      <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(18px, 4.5vw, 20px)', letterSpacing: '-0.015em', fontWeight: 500 }}><a href="tel:+919537383637">+91 95373 83637</a></div>
+                      <div className="contact-value"><a href="tel:+919537383637">+91 95373 83637</a></div>
                     </div>
                   </div>
                   <div style={{ height: 22 }} />
                   <div>
                     <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 6 }}>Email</div>
-                    <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(16px, 4vw, 18px)', letterSpacing: '-0.015em', fontWeight: 500, wordBreak: 'break-all' }}>
+                    <div className="contact-value contact-value-email">
                       <a href="mailto:divineewastesolution@gmail.com">divineewastesolution@gmail.com</a>
                     </div>
                   </div>
@@ -78,7 +78,20 @@ export default function Contact() {
             </aside>
           </div>
         </div>
-        <style>{`@media(max-width:880px){.contact-grid{grid-template-columns:1fr!important;gap:40px!important;}}`}</style>
+        <style>{`
+          @media(max-width:880px){.contact-grid{grid-template-columns:1fr!important;gap:40px!important;}}
+          .contact-lines { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+          .contact-value {
+            font-family: var(--display);
+            font-size: clamp(16px, 4vw, 18px);
+            letter-spacing: -0.015em;
+            font-weight: 500;
+          }
+          .contact-value-email { word-break: break-all; }
+          @media (max-width: 767px) {
+            .contact-lines { grid-template-columns: 1fr; gap: 18px; }
+          }
+        `}</style>
       </section>
 
       <section className="section" style={{ paddingTop: 0 }}>

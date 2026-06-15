@@ -77,15 +77,29 @@ function useReducedMotion() {
   return r
 }
 
+function useMobileScene() {
+  const [mobile, setMobile] = useState(false)
+  useEffect(() => {
+    const m = window.matchMedia('(max-width: 767px)')
+    setMobile(m.matches)
+    const h = () => setMobile(m.matches)
+    m.addEventListener('change', h)
+    return () => m.removeEventListener('change', h)
+  }, [])
+  return mobile
+}
+
 export default function PickupScene() {
   const reduced = useReducedMotion()
+  const mobile = useMobileScene()
+  const staticScene = reduced || mobile
   const sectionRef = useRef<HTMLElement>(null)
   const [sp, setSp] = useState(0)
 
-  const p = reduced ? 0.92 : sp
+  const p = staticScene ? 0.92 : sp
 
   useEffect(() => {
-    if (reduced) return
+    if (staticScene) return
     let raf = 0
     const calc = () => {
       raf = 0
@@ -105,7 +119,7 @@ export default function PickupScene() {
       window.removeEventListener('resize', onScroll)
       cancelAnimationFrame(raf)
     }
-  }, [reduced])
+  }, [staticScene])
 
   /* truck position */
   const tx = p < 0.12 ? lerp(128, PARK, easeIO(seg(p, 0, 0.12))) : PARK
@@ -139,9 +153,9 @@ export default function PickupScene() {
       className="pickup"
       id="pickup"
       ref={sectionRef}
-      style={reduced ? undefined : { height: '300vh' }}
+      style={staticScene ? undefined : { height: '300vh' }}
     >
-      <div className={`pickup-inner${reduced ? ' static' : ''}`}>
+      <div className={`pickup-inner${staticScene ? ' static' : ''}`}>
         <div className="wrap pickup-head reveal">
           <span className="eyebrow">We come to you</span>
           <h2>We pull up —<br />your old tech rolls out.</h2>
@@ -223,7 +237,7 @@ export default function PickupScene() {
           </div>
         </div>
 
-        {!reduced && (
+        {!staticScene && (
           <div className="scene-progress reveal" data-d="2">
             <div className="sp-track">
               <div className="sp-fill" style={{ width: `${p * 100}%` }} />

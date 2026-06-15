@@ -119,24 +119,26 @@ export default function BookPickupModal({ open, onClose }: ModalProps) {
         {/* Step 1 — items */}
         {step === 0 && (
           <div className="modal-body">
-            <h3>What are we picking up?</h3>
-            <p className="modal-sub">Select everything you&apos;d like recycled.</p>
-            <div className="type-toggle">
-              <button className={type === 'residential' ? 'on' : ''} onClick={() => setType('residential')}>
-                <IconHome /> Residential
-              </button>
-              <button className={type === 'business' ? 'on' : ''} onClick={() => setType('business')}>
-                <IconBuilding /> Business
-              </button>
-            </div>
-            <div className="item-grid">
-              {ITEMS.map(it => (
-                <button key={it.key} className={`item-card${picked[it.key] ? ' on' : ''}`} onClick={() => toggle(it.key)}>
-                  <span className="item-ic"><it.Icon /></span>
-                  <span className="item-lb">{it.label}</span>
-                  <span className="item-check"><IconCheck s={14} /></span>
+            <div className="modal-scroll">
+              <h3>What are we picking up?</h3>
+              <p className="modal-sub">Select everything you&apos;d like recycled.</p>
+              <div className="type-toggle">
+                <button className={type === 'residential' ? 'on' : ''} onClick={() => setType('residential')}>
+                  <IconHome /> Residential
                 </button>
-              ))}
+                <button className={type === 'business' ? 'on' : ''} onClick={() => setType('business')}>
+                  <IconBuilding /> Business
+                </button>
+              </div>
+              <div className="item-grid">
+                {ITEMS.map(it => (
+                  <button key={it.key} className={`item-card${picked[it.key] ? ' on' : ''}`} onClick={() => toggle(it.key)}>
+                    <span className="item-ic"><it.Icon /></span>
+                    <span className="item-lb">{it.label}</span>
+                    <span className="item-check"><IconCheck s={14} /></span>
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="modal-foot">
               <span className="mf-note">{anyItem ? `${pickedList.length} selected` : 'Pick at least one'}</span>
@@ -150,46 +152,48 @@ export default function BookPickupModal({ open, onClose }: ModalProps) {
         {/* Step 2 — details */}
         {step === 1 && (
           <div className="modal-body">
-            <h3>Where &amp; when?</h3>
-            <p className="modal-sub">
-              Free pickup, {type === 'business' ? 'scheduled for your site' : 'right from your door'}.
-            </p>
-            <div className="form-grid">
-              <label className={`fld${touched && errs.name ? ' err' : ''}`}>
-                <span>Full name</span>
-                <input value={form.name} onChange={e => set('name', e.target.value)} placeholder="Priya Sharma" />
-                {touched && errs.name && <i>Please enter your name</i>}
-              </label>
-              <label className={`fld${touched && errs.email ? ' err' : ''}`}>
-                <span>Email</span>
-                <input value={form.email} onChange={e => set('email', e.target.value)} placeholder="you@email.com" />
-                {touched && errs.email && <i>Enter a valid email</i>}
-              </label>
-              <label className="fld">
-                <span>Phone <small>(optional)</small></span>
-                <input value={form.phone} onChange={e => set('phone', e.target.value)} placeholder="+91 98765 43210" />
-              </label>
-              <label className={`fld${touched && errs.address ? ' err' : ''}`}>
-                <span>{type === 'business' ? 'Business address' : 'Pickup address'}</span>
-                <input value={form.address} onChange={e => set('address', e.target.value)} placeholder="Street, City, State" />
-                {touched && errs.address && <i>We need an address</i>}
-              </label>
-              <label className={`fld${touched && errs.date ? ' err' : ''}`}>
-                <span>Preferred date</span>
-                <input type="date" min={dateMin} value={form.date} onChange={e => set('date', e.target.value)} />
-                {touched && errs.date && <i>Choose a date</i>}
-              </label>
-              <label className={`fld${touched && errs.win ? ' err' : ''}`}>
-                <span>Time window</span>
-                <div className="win-row">
-                  {WINDOWS.map(w => (
-                    <button type="button" key={w} className={`win${form.win === w ? ' on' : ''}`} onClick={() => set('win', w)}>
-                      {w}
-                    </button>
-                  ))}
-                </div>
-                {touched && errs.win && <i>Pick a time window</i>}
-              </label>
+            <div className="modal-scroll">
+              <h3>Where &amp; when?</h3>
+              <p className="modal-sub">
+                Free pickup, {type === 'business' ? 'scheduled for your site' : 'right from your door'}.
+              </p>
+              <div className="form-grid">
+                <label className={`fld${touched && errs.name ? ' err' : ''}`}>
+                  <span>Full name</span>
+                  <input value={form.name} onChange={e => set('name', e.target.value)} placeholder="Priya Sharma" />
+                  {touched && errs.name && <i>Please enter your name</i>}
+                </label>
+                <label className={`fld${touched && errs.email ? ' err' : ''}`}>
+                  <span>Email</span>
+                  <input value={form.email} onChange={e => set('email', e.target.value)} placeholder="you@email.com" />
+                  {touched && errs.email && <i>Enter a valid email</i>}
+                </label>
+                <label className="fld">
+                  <span>Phone <small>(optional)</small></span>
+                  <input value={form.phone} onChange={e => set('phone', e.target.value)} placeholder="+91 98765 43210" />
+                </label>
+                <label className={`fld${touched && errs.address ? ' err' : ''}`}>
+                  <span>{type === 'business' ? 'Business address' : 'Pickup address'}</span>
+                  <input value={form.address} onChange={e => set('address', e.target.value)} placeholder="Street, City, State" />
+                  {touched && errs.address && <i>We need an address</i>}
+                </label>
+                <label className={`fld${touched && errs.date ? ' err' : ''}`}>
+                  <span>Preferred date</span>
+                  <input type="date" min={dateMin} value={form.date} onChange={e => set('date', e.target.value)} />
+                  {touched && errs.date && <i>Choose a date</i>}
+                </label>
+                <label className={`fld${touched && errs.win ? ' err' : ''}`}>
+                  <span>Time window</span>
+                  <div className="win-row">
+                    {WINDOWS.map(w => (
+                      <button type="button" key={w} className={`win${form.win === w ? ' on' : ''}`} onClick={() => set('win', w)}>
+                        {w}
+                      </button>
+                    ))}
+                  </div>
+                  {touched && errs.win && <i>Pick a time window</i>}
+                </label>
+              </div>
             </div>
             <div className="modal-foot">
               <button className="btn btn-ghost btn-lg" onClick={back}>Back</button>
@@ -203,22 +207,24 @@ export default function BookPickupModal({ open, onClose }: ModalProps) {
         {/* Step 3 — success */}
         {step === 2 && (
           <div className="modal-body success">
-            <div className="ok-burst">
-              <div className="ok-ring" />
-              <div className="ok-check"><IconCheck s={40} /></div>
-            </div>
-            <h3>You&apos;re booked, {form.name.split(' ')[0] || 'friend'}! 🌱</h3>
-            <p className="modal-sub">
-              A confirmation is on its way to <b>{form.email}</b>. Our crew will arrive on:
-            </p>
-            <div className="ok-summary">
-              <div><span>When</span><b>{form.date} · {form.win}</b></div>
-              <div><span>Where</span><b>{form.address}</b></div>
-              <div><span>Items</span><b>{pickedList.join(', ') || '—'}</b></div>
-              <div><span>Type</span><b style={{ textTransform: 'capitalize' }}>{type}</b></div>
-            </div>
-            <div className="ok-loop">
-              <IconLeaf /> Track your devices through every stage of the Divine loop.
+            <div className="modal-scroll">
+              <div className="ok-burst">
+                <div className="ok-ring" />
+                <div className="ok-check"><IconCheck s={40} /></div>
+              </div>
+              <h3>You&apos;re booked, {form.name.split(' ')[0] || 'friend'}! 🌱</h3>
+              <p className="modal-sub">
+                A confirmation is on its way to <b>{form.email}</b>. Our crew will arrive on:
+              </p>
+              <div className="ok-summary">
+                <div><span>When</span><b>{form.date} · {form.win}</b></div>
+                <div><span>Where</span><b>{form.address}</b></div>
+                <div><span>Items</span><b>{pickedList.join(', ') || '—'}</b></div>
+                <div><span>Type</span><b style={{ textTransform: 'capitalize' }}>{type}</b></div>
+              </div>
+              <div className="ok-loop">
+                <IconLeaf /> Track your devices through every stage of the Divine loop.
+              </div>
             </div>
             <div className="modal-foot center">
               <button className="btn btn-primary btn-lg" onClick={onClose}>Done</button>
