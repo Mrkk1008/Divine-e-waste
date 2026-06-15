@@ -26,7 +26,7 @@ export default function Privacy() {
       <section style={{ padding: '80px 0 56px', borderBottom: '1px solid var(--rule)' }}>
         <div className="wrap">
           <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: 28 }}>Home / Privacy Policy</div>
-          <h1 style={{ fontSize: 'clamp(48px, 6.5vw, 88px)', lineHeight: 0.98, letterSpacing: '-0.04em', fontWeight: 500, maxWidth: '14ch' }}>
+          <h1 style={{ fontSize: 'clamp(32px, 8vw, 88px)', lineHeight: 0.98, letterSpacing: '-0.04em', fontWeight: 500, maxWidth: '14ch' }}>
             Privacy <em style={{ fontStyle: 'italic', color: 'var(--forest)', fontWeight: 400 }}>Policy.</em>
           </h1>
           <div style={{

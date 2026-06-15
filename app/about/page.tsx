@@ -56,10 +56,10 @@ export default function About() {
           <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 80, alignItems: 'start' }} className="about-grid">
             <div>
               <span className="eyebrow" style={{ marginBottom: 18, display: 'flex' }}>Our mission</span>
-              <h2 style={{ fontSize: 'clamp(36px, 4vw, 52px)', letterSpacing: '-0.035em', lineHeight: 1.02, maxWidth: '16ch' }}>
+              <h2 style={{ fontSize: 'clamp(26px, 5vw, 52px)', letterSpacing: '-0.035em', lineHeight: 1.02, maxWidth: '16ch' }}>
                 Build a cleaner, greener future — one consignment at a time.
               </h2>
-              <p style={{ color: 'var(--ink-2)', fontSize: 16.5, marginTop: 18 }}>
+              <p style={{ color: 'var(--ink-2)', fontSize: 'clamp(16px, 4vw, 16.5px)', marginTop: 18 }}>
                 India generates more than three million tonnes of e-waste a year, and most of it
                 still leaks into the informal sector — where it is burned, melted, or buried.
                 We exist to make the right choice the easy choice. For a business, that means a
@@ -67,7 +67,7 @@ export default function About() {
                 certificate. For the planet, that means materials returned to the loop and toxins
                 kept out of soil and water.
               </p>
-              <p style={{ color: 'var(--ink-2)', fontSize: 16.5, marginTop: 18 }}>
+              <p style={{ color: 'var(--ink-2)', fontSize: 'clamp(16px, 4vw, 16.5px)', marginTop: 18 }}>
                 Our team operates out of Katargam GIDC in Surat and serves clients across India —
                 from single-pallet pickups for small offices to enterprise-wide hardware refresh
                 programs for IT services firms.
@@ -120,9 +120,9 @@ export default function About() {
           }} className="pillars-grid">
             {PILLARS.map((p, i) => (
               <div key={p.n} style={{ padding: 36, borderRight: i < 2 ? '1px solid var(--rule)' : undefined }}>
-                <div style={{ fontFamily: 'var(--display)', fontSize: 80, fontWeight: 400, color: 'var(--rule-2)', letterSpacing: '-0.04em', lineHeight: 1 }}>{p.n}</div>
-                <h3 style={{ fontSize: 24, letterSpacing: '-0.02em', margin: '28px 0 12px' }}>{p.h}</h3>
-                <p style={{ color: 'var(--ink-2)', fontSize: 14.5, margin: 0 }}>{p.p}</p>
+                <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(48px, 14vw, 80px)', fontWeight: 400, color: 'var(--rule-2)', letterSpacing: '-0.04em', lineHeight: 1 }}>{p.n}</div>
+                <h3 style={{ fontSize: 'clamp(20px, 5vw, 24px)', letterSpacing: '-0.02em', margin: '28px 0 12px' }}>{p.h}</h3>
+                <p style={{ color: 'var(--ink-2)', fontSize: 'clamp(14px, 3.6vw, 14.5px)', margin: 0 }}>{p.p}</p>
               </div>
             ))}
           </div>
@@ -154,11 +154,11 @@ export default function About() {
                 alignItems: 'start',
               }} className="t-row">
                 <div>
-                  <span style={{ fontFamily: 'var(--display)', fontSize: 36, letterSpacing: '-0.03em', fontWeight: 500, lineHeight: 1 }}>{row.year}</span>
+                  <span style={{ fontFamily: 'var(--display)', fontSize: 'clamp(28px, 7vw, 36px)', letterSpacing: '-0.03em', fontWeight: 500, lineHeight: 1 }}>{row.year}</span>
                   <small style={{ display: 'block', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', color: 'var(--muted)', fontWeight: 400, textTransform: 'uppercase', marginTop: 8 }}>{row.tag}</small>
                 </div>
-                <div style={{ fontFamily: 'var(--display)', fontSize: 20, letterSpacing: '-0.02em', fontWeight: 500 }}>{row.t}</div>
-                <div style={{ color: 'var(--ink-2)', fontSize: 15 }}>{row.d}</div>
+                <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(18px, 4.5vw, 20px)', letterSpacing: '-0.02em', fontWeight: 500 }}>{row.t}</div>
+                <div style={{ color: 'var(--ink-2)', fontSize: 'clamp(15px, 4vw, 16px)' }}>{row.d}</div>
               </div>
             ))}
           </div>
@@ -184,7 +184,7 @@ export default function About() {
                   [ {person.label} ]
                 </div>
                 <div>
-                  <div style={{ fontFamily: 'var(--display)', fontSize: 20, letterSpacing: '-0.02em', fontWeight: 500 }}>{person.name}</div>
+                  <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(18px, 4.5vw, 20px)', letterSpacing: '-0.02em', fontWeight: 500 }}>{person.name}</div>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: 6 }}>{person.role}</div>
                 </div>
               </article>
@@ -204,7 +204,7 @@ export default function About() {
           }} className="about-cta">
             <div>
               <span className="eyebrow" style={{ marginBottom: 14, display: 'flex' }}>Work with us</span>
-              <h2 style={{ fontSize: 'clamp(28px, 3.4vw, 44px)', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
+              <h2 style={{ fontSize: 'clamp(24px, 5vw, 44px)', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
                 Have a hardware refresh, a warehouse clearance, or an EPR target on your desk?
               </h2>
             </div>

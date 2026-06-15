@@ -31,17 +31,17 @@ export default function Contact() {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 22 }}>
                     <div>
                       <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 6 }}>Operations</div>
-                      <div style={{ fontFamily: 'var(--display)', fontSize: 20, letterSpacing: '-0.015em', fontWeight: 500 }}><a href="tel:+917990548623">+91 79905 48623</a></div>
+                      <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(18px, 4.5vw, 20px)', letterSpacing: '-0.015em', fontWeight: 500 }}><a href="tel:+917990548623">+91 79905 48623</a></div>
                     </div>
                     <div>
                       <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 6 }}>Logistics</div>
-                      <div style={{ fontFamily: 'var(--display)', fontSize: 20, letterSpacing: '-0.015em', fontWeight: 500 }}><a href="tel:+919537383637">+91 95373 83637</a></div>
+                      <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(18px, 4.5vw, 20px)', letterSpacing: '-0.015em', fontWeight: 500 }}><a href="tel:+919537383637">+91 95373 83637</a></div>
                     </div>
                   </div>
                   <div style={{ height: 22 }} />
                   <div>
                     <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 6 }}>Email</div>
-                    <div style={{ fontFamily: 'var(--display)', fontSize: 18, letterSpacing: '-0.015em', fontWeight: 500, wordBreak: 'break-all' }}>
+                    <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(16px, 4vw, 18px)', letterSpacing: '-0.015em', fontWeight: 500, wordBreak: 'break-all' }}>
                       <a href="mailto:divineewastesolution@gmail.com">divineewastesolution@gmail.com</a>
                     </div>
                   </div>
@@ -52,7 +52,7 @@ export default function Contact() {
                 <div style={{ padding: '14px 22px', background: 'var(--paper)', borderBottom: '1px solid var(--rule)', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--muted)' }}>Office &amp; sorting facility</div>
                 <div style={{ padding: '24px 22px' }}>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 6 }}>Address</div>
-                  <div style={{ fontFamily: 'var(--display)', fontSize: 18, lineHeight: 1.35, fontWeight: 500 }}>
+                  <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(16px, 4vw, 18px)', lineHeight: 1.35, fontWeight: 500 }}>
                     P-818, Katargam New GIDC<br />
                     Surat, Gujarat — 395004<br />
                     India
@@ -60,14 +60,13 @@ export default function Contact() {
                   <div style={{ height: 22 }} />
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 10 }}>Open hours</div>
                   {[
-                    ['Mon — Fri', '09:00 — 19:00'],
-                    ['Saturday', '10:00 — 16:00'],
-                    ['Sunday', 'Closed'],
+                    ['Mon — Sat', '09:00 — 18:30'],
+                    ['Sunday', 'Door-to-door collection only'],
                     ['Public holidays', 'By appointment'],
                   ].map(([day, time]) => (
-                    <div key={day} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', fontSize: 14.5, borderBottom: '1px solid var(--rule)' }}>
+                    <div key={day} style={{ display: 'flex', justifyContent: 'space-between', gap: 12, padding: '8px 0', fontSize: 'clamp(14px, 3.6vw, 14.5px)', borderBottom: '1px solid var(--rule)' }}>
                       <span>{day}</span>
-                      <span style={{ fontFamily: 'var(--mono)', fontSize: 13, color: 'var(--ink-2)' }}>{time}</span>
+                      <span style={{ fontFamily: 'var(--mono)', fontSize: 'clamp(12px, 3.2vw, 13px)', color: 'var(--ink-2)', textAlign: 'right' }}>{time}</span>
                     </div>
                   ))}
                 </div>
@@ -92,8 +91,8 @@ export default function Contact() {
             ].map((qs, i) => (
               <div key={qs.t} style={{ padding: 28, borderRight: i < 2 ? '1px solid var(--rule)' : undefined }}>
                 <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--muted)' }}>{qs.t}</div>
-                <h4 style={{ fontSize: 20, letterSpacing: '-0.02em', fontWeight: 500, margin: '10px 0 8px' }}>{qs.h}</h4>
-                <p style={{ color: 'var(--ink-2)', fontSize: 14, margin: 0 }}>{qs.p}</p>
+                <h4 style={{ fontSize: 'clamp(18px, 4.5vw, 20px)', letterSpacing: '-0.02em', fontWeight: 500, margin: '10px 0 8px' }}>{qs.h}</h4>
+                <p style={{ color: 'var(--ink-2)', fontSize: 'clamp(14px, 3.5vw, 14px)', margin: 0 }}>{qs.p}</p>
                 <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 16, fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase' }}>{qs.link} →</a>
               </div>
             ))}

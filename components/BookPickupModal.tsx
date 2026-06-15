@@ -43,7 +43,7 @@ const ITEMS = [
   { key: 'tv',     label: 'TVs & monitors',                  Icon: DevTv },
   { key: 'misc',   label: 'Cables, chargers & small gadgets',Icon: IconRecycle },
 ]
-const WINDOWS = ['8–11 am', '11 am–2 pm', '2–5 pm', '5–7 pm']
+const WINDOWS = ['9–12 am', '12–3 pm', '3–6 pm', '6–6:30 pm']
 
 function isEmailValid(v: string) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) }
 function hasValue(v: string) { return v.trim().length > 0 }

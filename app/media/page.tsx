@@ -97,7 +97,7 @@ export default function Media() {
               </div>
             </div>
             <div style={{ position: 'absolute', left: 24, bottom: 24, right: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', color: '#fff' }}>
-              <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(22px,2.4vw,34px)', letterSpacing: '-0.025em', fontWeight: 500, textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}>
+              <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(20px, 5vw, 34px)', letterSpacing: '-0.025em', fontWeight: 500, textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}>
                 Inside Katargam: a day on the sorting floor.
               </div>
               <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', padding: '6px 10px', background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.2)' }}>
@@ -131,7 +131,7 @@ export default function Media() {
                 </div>
                 <div style={{ padding: '18px 22px 22px' }}>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 10.5, letterSpacing: '0.14em', color: 'var(--muted)', textTransform: 'uppercase' }}>{v.meta}</div>
-                  <h4 style={{ fontFamily: 'var(--display)', fontSize: 17, letterSpacing: '-0.015em', lineHeight: 1.25, margin: '10px 0 0', fontWeight: 500 }}>{v.title}</h4>
+                  <h4 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(16px, 4vw, 17px)', letterSpacing: '-0.015em', lineHeight: 1.25, margin: '10px 0 0', fontWeight: 500 }}>{v.title}</h4>
                 </div>
               </article>
             ))}

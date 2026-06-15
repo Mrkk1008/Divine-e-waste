@@ -10,6 +10,11 @@ export const metadata: Metadata = {
     'Divine E-Waste Solution channels electronic and plastic waste into certified, sustainable recycling — with secure data destruction, EPR compliance and pan-India logistics.',
 }
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
