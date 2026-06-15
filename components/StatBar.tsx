@@ -1,64 +1,64 @@
+'use client'
+
+import { useRef, useEffect, useState } from 'react'
+
 const STATS = [
-  { n: '28', sup: '+',   lbl: 'Indian states served' },
-  { n: '1,200', sup: 'T', lbl: 'E-waste processed' },
-  { n: '100', sup: '%',  lbl: 'Certified data destruction' },
-  { n: '48', sup: 'hr',  lbl: 'Avg. pickup turnaround' },
+  { to: 100, suffix: '%',     label: 'Authorized recycling',    sub: 'channelized to certified recyclers' },
+  { text: 'Pan-India',        label: 'Collection & logistics',  sub: 'fast pickups with live tracking' },
+  { to: 0,                    label: 'Sent to landfill',        sub: 'nothing dumped or incinerated' },
+  { to: 2,                    label: 'Waste streams',           sub: 'electronic + plastic waste' },
 ]
+
+function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const [v, setV] = useState(0)
+  const seen = useRef(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !seen.current) {
+          seen.current = true
+          const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          if (reduced) { setV(to); return }
+          let raf = 0, start = 0
+          const tick = (t: number) => {
+            if (!start) start = t
+            const prog = Math.min(1, (t - start) / 1700)
+            const eased = 1 - Math.pow(1 - prog, 3)
+            setV(to * eased)
+            if (prog < 1) raf = requestAnimationFrame(tick)
+          }
+          raf = requestAnimationFrame(tick)
+        }
+      })
+    }, { threshold: 0.5 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [to])
+
+  return <span ref={ref}>{Math.round(v).toLocaleString('en-US')}{suffix}</span>
+}
 
 export default function StatBar() {
   return (
-    <section>
-      <div className="wrap" style={{ paddingLeft: 0, paddingRight: 0 }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          borderBottom: '1px solid var(--rule)',
-          margin: '0 var(--gutter)',
-        }}
-          className="stat-bar-grid"
-        >
-          {STATS.map((s, i) => (
-            <div key={i} style={{
-              padding: '36px 24px',
-              borderRight: i < STATS.length - 1 ? '1px solid var(--rule)' : undefined,
-            }}>
-              <div style={{
-                fontFamily: 'var(--display)',
-                fontSize: 44,
-                lineHeight: 1,
-                letterSpacing: '-0.03em',
-                fontWeight: 500,
-              }}>
-                {s.n}
-                <sup style={{ fontSize: '0.5em', color: 'var(--forest)', marginLeft: 4, verticalAlign: 'top', position: 'relative', top: '0.15em' }}>
-                  {s.sup}
-                </sup>
-              </div>
-              <div style={{
-                fontFamily: 'var(--mono)',
-                fontSize: 11,
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                color: 'var(--muted)',
-                marginTop: 10,
-              }}>
-                {s.lbl}
-              </div>
+    <section className="stats" id="impact">
+      <div className="wrap stats-grid">
+        {STATS.map((s, i) => (
+          <div key={i} className="stat reveal" data-d={i + 1}>
+            <div className="stat-num">
+              {'text' in s
+                ? s.text
+                : <Counter to={s.to!} suffix={s.suffix} />
+              }
             </div>
-          ))}
-        </div>
+            <div className="stat-label">{s.label}</div>
+            <div className="stat-sub">{s.sub}</div>
+          </div>
+        ))}
       </div>
-      <style>{`
-        @media (max-width: 760px) {
-          .stat-bar-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .stat-bar-grid > div:nth-child(2) { border-right: none !important; }
-          .stat-bar-grid > div:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
-        }
-        @media (max-width: 400px) {
-          .stat-bar-grid { grid-template-columns: 1fr !important; }
-          .stat-bar-grid > div { border-right: none !important; border-bottom: 1px solid var(--rule); }
-        }
-      `}</style>
     </section>
   )
 }

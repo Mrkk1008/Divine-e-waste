@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "PowerShell(Get-Item *)",
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"C:\\\\Users\\\\Krunal\\\\AppData\\\\Local\\\\Temp\\\\design_out\"\\); $header = $bytes[0..3] | ForEach-Object { $_.ToString\\(\"X2\"\\) }; \"Header bytes: $header\"; $text = [System.Text.Encoding]::UTF8.GetString\\($bytes, 0, [Math]::Min\\(2000, $bytes.Length\\)\\); $text)",
+      "Bash(mkdir -p /tmp/design_extracted)",
+      "Bash(tar -xf \"C:/Users/Krunal/AppData/Local/Temp/design_out\" -C /tmp/design_extracted)",
+      "Read(//tmp/**)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(Get-Content *)"
+    ]
+  }
+}
